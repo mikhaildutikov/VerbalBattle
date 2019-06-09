@@ -1,0 +1,17 @@
+﻿@model IEnumerable<VerbalBattle.Domain.Battle>
+
+@{
+    ViewBag.Title = "Бои";
+}
+
+<h2>Бои</h2>
+
+<p>
+    @Html.ActionLink("Добавить", "AddBattle", "Battle")
+</p>
+
+<ul>
+@foreach (var item in Model) {
+    <li>@Html.ActionLink(item.Id.ToString("N"), "BattleDetails", "battle", new { item.Id }, null)</li>
+}
+</ul>

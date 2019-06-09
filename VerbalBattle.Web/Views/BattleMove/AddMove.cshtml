@@ -1,0 +1,37 @@
+﻿@model VerbalBattle.Web.Models.NewBattleMoveViewModel
+
+@{
+    ViewBag.Title = "Сказать";
+}
+
+<h2>Скажите:</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>NewBattleMoveViewModel</legend>
+
+        <div class="editor-field">
+            @Html.EditorFor(model => model.BattleId)
+            @Html.ValidationMessageFor(model => model.BattleId)
+        </div>
+
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Text)
+            @Html.ValidationMessageFor(model => model.Text)
+        </div>
+
+        <p>
+            <input type="submit" value="Гав!" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Вернуться к списку реплик в бое", "BattleDetails", "Battle", new { id = Model.BattleId }, null)
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

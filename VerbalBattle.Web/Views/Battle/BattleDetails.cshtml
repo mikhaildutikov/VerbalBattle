@@ -1,0 +1,21 @@
+﻿@model VerbalBattle.Domain.Battle
+
+@{
+    ViewBag.Title = "Бой";
+}
+
+<h2>Бой</h2>
+
+<fieldset>
+    <legend>BattleDetails</legend>
+</fieldset>
+<p>
+    @Html.ActionLink("Вернуться к списку", "Index", "Home")
+</p>
+
+<ul>
+@foreach (var verse in Model.Verses.OrderBy(v => v.Order)) {
+    <li>@verse.Text</li>
+}
+<li>@Html.ActionLink("Сказать еще!", "AddMove", "BattleMove", new { BattleId = Model.Id}, null)</li>
+</ul>
